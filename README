@@ -1,0 +1,26 @@
+>>> celery -A project worker -l INFO
+
+-----------------------------------------------------------------------------------
+>>> celery multi start w1 w2 w3 -A project worker -l INFO --detach
+
+(( for running celery with multi worker ))
+(( note : for stop celery in this mode , its needed to write whole command like:
+celery multi stop w1 w2 w3 -A project worker -l INFO --detach
+or
+celery multi stopwait w1 w2 w3 -A project worker -l INFO --detach ))
+
+(( note : multi , create pid file for save workers information ))
+---------------------------------------------------------------------------------------------
+>>> celery multi start 3 -c 4
+
+(( in this command 3 is number of worker and 4 is number of concurrency ))
+-------------------------------------------------------------------------------------------
+>>> celery -A project worker -n 3 -l DEBUG -Q default,low,high
+
+>>> celery -A project worker -Q queue1,queue2,queue3 -l INFO
+(( for run celery with some queue ))
+
+------------------------------------------------------------------------------------------
+>>> celery -A project inspect active
+
+(( for get information about our tasks ))
